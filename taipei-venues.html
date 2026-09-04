@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台北酒店整理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efefef;
+    --ink:#2b2a26;
+    --ink-soft:#5c594f;
+    --line:#c9c4b4;
+    --tag-bg:#dedad0;
+    --accent:#7a3b2e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:1.75;
+  }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 20px 100px;
+  }
+  header{
+    margin-bottom:40px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  header .eyebrow{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  header h1{
+    font-size:24px;
+    font-weight:600;
+    margin:10px 0 8px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:32px;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+  .back-link:hover{
+    color:var(--accent);
+  }
+  ul.venues{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  ul.venues li{
+    border-bottom:1px dashed var(--line);
+    padding:14px 0;
+  }
+  ul.venues li:last-child{
+    border-bottom:none;
+  }
+  .venue-name{
+    font-size:16px;
+    font-weight:600;
+  }
+  .venue-tags{
+    margin-top:4px;
+  }
+  .tag{
+    display:inline-block;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:10.5px;
+    background:var(--tag-bg);
+    color:var(--ink-soft);
+    padding:2px 7px;
+    border-radius:3px;
+    margin-right:6px;
+    margin-top:4px;
+    letter-spacing:0.02em;
+  }
+  .controls{
+    margin-bottom:28px;
+  }
+  .search-box{
+    width:100%;
+    padding:10px 14px;
+    font-size:14.5px;
+    font-family:"Noto Sans TC","PingFang TC",sans-serif;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:#f6f4ee;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .search-box:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  .filter-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:11.5px;
+    letter-spacing:0.02em;
+    padding:5px 12px;
+    border-radius:14px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .chip:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .chip.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#f2ece4;
+  }
+  .empty-msg{
+    display:none;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding:20px 0;
+  }
+  .disclaimer{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:36px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line);
+  }
+  .section-block{
+    margin-bottom:44px;
+  }
+  .section-block h2{
+    font-size:17px;
+    font-weight:600;
+    margin:0 0 14px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .section-block h2 .num{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.05em;
+  }
+  dl.glossary{
+    margin:0;
+  }
+  dl.glossary > div{
+    display:flex;
+    gap:14px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:14.5px;
+  }
+  dl.glossary > div:last-child{
+    border-bottom:none;
+  }
+  dl.glossary dt{
+    flex-shrink:0;
+    width:64px;
+    font-weight:600;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:13px;
+    color:var(--accent);
+  }
+  dl.glossary dd{
+    margin:0;
+    color:var(--ink);
+  }
+  .subgroup{
+    margin-top:24px;
+  }
+  .subgroup h3{
+    font-size:14.5px;
+    font-weight:600;
+    margin:0 0 10px;
+    color:var(--ink-soft);
+  }
+  .extra-note{
+    font-size:14.5px;
+    margin-bottom:24px;
+    padding-bottom:20px;
+    border-bottom:1px dashed var(--line);
+  }
+  .extra-note:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+  .extra-note h3{
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .extra-note p{
+    margin:0 0 8px;
+  }
+  .extra-note p:last-child{
+    margin-bottom:0;
+  }
+  footer{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">← 回索引</a>
+
+  <header>
+    <div class="eyebrow">資料整理 / REFERENCE</div>
+    <h1>台北酒店整理</h1>
+  </header>
+
+  <p class="disclaimer">歡迎補充跟修正。被經紀帶去之前可以知道一下店家在幹嘛。不覺得接S不好，但不想接S的姐妹可以避開特定任務比例高的店家。不鼓勵任何人消費性交易以及從事性交易。本名單旨在維護公關權益，不代表任何個人立場。(在台灣性交易僅在專區合法，但因為台灣沒有專區，所以性交易不合法。)</p>
+
+  <div class="section-block">
+    <h2><span class="num">※</span>名詞解釋</h2>
+    <dl class="glossary">
+      <div><dt>框</dt><dd>買特定一段時間。</dd></div>
+      <div><dt>秀舞</dt><dd>坐在客人身上跳舞磨蹭（制服要脫上衣，制服以外有秀舞的店應該不脫）。</dd></div>
+      <div><dt>S</dt><dd>＝任務＝配＝性交易。</dd></div>
+      <div><dt>洗S</dt><dd>鼓吹公關接S。</dd></div>
+      <div><dt>手工</dt><dd>幫客人打手槍。</dd></div>
+      <div><dt>午場</dt><dd>下午時段開始營業。</dd></div>
+      <div><dt>晚場</dt><dd>只有晚上到凌晨營業。</dd></div>
+      <div><dt>幹部</dt><dd>聯絡店家、小姐、客人之間的仲介。</dd></div>
+    </dl>
+    <div class="subgroup">
+      <dl class="glossary">
+        <div><dt>制服店</dt><dd>有規定統一服裝，尺度最大的店，秀舞要脫衣服，明配會直接點出來，秀舞後可能包含手工服務。但一間制服店裡面也會有尺度小的領檯，或不接S、不秀、不手工的人。接任務比例偏高。</dd></div>
+        <div><dt>制禮店</dt><dd>一間店同時有制服、（領檯）、禮服。</dd></div>
+        <div><dt>公主店</dt><dd>定位有點模糊的店，介於制服跟禮服中間。外貌條件要求高。前身可能是現金公主店。接任務比例偏高（但不等於純明配的砲店）。</dd></div>
+        <div><dt>砲店</dt><dd>九成以上都要明配的店。</dd></div>
+        <div><dt>禮服店</dt><dd>穿小禮服的店。尺度中等，以看台制（站一排在包廂前面給客人選）為主。</dd></div>
+        <div><dt>便禮店</dt><dd>便禮店裡面小姐沒有分類，以帶台制為主≈框店。</dd></div>
+        <div><dt>便服店</dt><dd>外貌條件最高的店。帶台制。同時具有框店的性質。</dd></div>
+        <div><dt>帶台店</dt><dd>幹部帶台制。</dd></div>
+        <div><dt>看台店</dt><dd>施行看台制度（又稱選妃）的店，小姐站一排喊老闆好給客人選。大多數禮服店都是看台店。</dd></div>
+        <div><dt>框店</dt><dd>帶台制，不用看台、小姐要留客人就要框。不框就會被帶去看其他桌。框店是根據轉台制度分類，所以可能有禮服/便禮/便服/制服框店（≈公主店）。</dd></div>
+        <div><dt>店家店</dt><dd>只有特定店家配合的經紀可以帶的店，並且店內只有店家幹部可以開桌。跟店家相反的是業績幹部，業績幹部等於自由球員，可以在各大酒店裡面開桌。通常店家店體系會比較嚴格而且封閉，屬於勞動條件較不好的系統。</dd></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input type="text" class="search-box" id="searchBox" placeholder="搜尋店名或類型…">
+    <div class="filter-chips" id="filterChips">
+      <button class="chip active" data-tag="全部">全部</button>
+      <button class="chip" data-tag="禮服">禮服</button>
+       <button class="chip" data-tag="便禮">便禮</button>
+      <button class="chip" data-tag="公主店">公主店</button>
+      <button class="chip" data-tag="便服">便服</button>
+      <button class="chip" data-tag="制服">制服</button>
+      <button class="chip" data-tag="框店">框店</button>
+      <button class="chip" data-tag="午場">午場</button>
+      <button class="chip" data-tag="秀舞">秀舞</button>
+      <button class="chip" data-tag="威系列">威系列</button>
+      <button class="chip" data-tag="王董體系">王董體系</button>
+    </div>
+  </div>
+
+  <ul class="venues" id="venueList">
+    <li data-tags="純制服,威系列,午場,秀舞">
+      <div class="venue-name">皇冠</div>
+      <div class="venue-tags"><span class="tag">純制服</span><span class="tag">威系列同集團</span><span class="tag">午場</span><span class="tag">不用穿制服</span><span class="tag">一定要秀舞要手工</span></div>
+    </li>
+    <li data-tags="禮服,威系列">
+      <div class="venue-name">皇家</div>
+      <div class="venue-tags"><span class="tag">禮服</span><span class="tag">威系列同集團</span></div>
+    </li>
+    <li data-tags="制禮,制服,禮服,午場,秀舞">
+      <div class="venue-name">金聰</div>
+      <div class="venue-tags"><span class="tag">制禮</span><span class="tag">午場</span><span class="tag">不用穿制服</span><span class="tag">一定要秀舞要手工</span></div>
+    </li>
+    <li data-tags="制禮,制服,禮服,午場">
+      <div class="venue-name">豪昇</div>
+      <div class="venue-tags"><span class="tag">制禮</span><span class="tag">午場</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">龍昇</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">首席</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="便禮,王董體系">
+      <div class="venue-name">名亨</div>
+      <div class="venue-tags"><span class="tag">便禮</span><span class="tag">王董(狗子哥)體系</span></div>
+    </li>
+    <li data-tags="公主店,純明配,王董體系">
+      <div class="venue-name">名享</div>
+      <div class="venue-tags"><span class="tag">公主店</span><span class="tag">純明配</span><span class="tag">王董(狗子哥)體系</span></div>
+    </li>
+    <li data-tags="公主店,午場">
+      <div class="venue-name">鴻欣</div>
+      <div class="venue-tags"><span class="tag">公主店</span><span class="tag">午場</span></div>
+    </li>
+    <li data-tags="公主店/店家店,洗S,王董體系">
+      <div class="venue-name">香水</div>
+      <div class="venue-tags"><span class="tag">公主店/店家店</span><span class="tag">洗S</span><span class="tag">王董(狗子哥)體系</span></div>
+    </li>
+    <li data-tags="前身公主店，現轉型小框店,任務約五成,洗秀舞,秀舞,王董體系">
+      <div class="venue-name">世盟百欣</div>
+      <div class="venue-tags"><span class="tag">前身公主店，現轉型小框店</span><span class="tag">任務約五成</span><span class="tag">洗秀舞</span><span class="tag">王董(狗子哥)體系</span></div>
+    </li>
+    <li data-tags="純便服">
+      <div class="venue-name">龍亨</div>
+      <div class="venue-tags"><span class="tag">純便服</span></div>
+    </li>
+    <li data-tags="純便服">
+      <div class="venue-name">巴塞隆納/王牌</div>
+      <div class="venue-tags"><span class="tag">純便服</span></div>
+    </li>
+    <li data-tags="便禮,秀舞,王董體系">
+      <div class="venue-name">101</div>
+      <div class="venue-tags"><span class="tag">便禮</span><span class="tag">秀舞(?)</span><span class="tag">洗S</span><span class="tag">王董(狗子哥)體系</span></div>
+    </li>
+    <li data-tags="便禮,洗S傳聞,午場,王董體系'">
+      <div class="venue-name">金拿督</div>
+      <div class="venue-tags"><span class="tag">便禮</span><span class="tag">午場</span><span class="tag">洗S傳聞</span><span class="tag">王董(狗子哥)體系</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">金荷</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="便禮,午場">
+      <div class="venue-name">金典</div>
+      <div class="venue-tags"><span class="tag">便禮</span><span class="tag">午場</span><span class="tag">帶台店</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">新濠</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="框店,威系列">
+      <div class="venue-name">威晶</div>
+      <div class="venue-tags"><span class="tag">框店</span><span class="tag">威系列</span></div>
+    </li>
+    <li data-tags="框店,威系列,午場三點開始,午場">
+      <div class="venue-name">威士登</div>
+      <div class="venue-tags"><span class="tag">框店</span><span class="tag">威系列</span><span class="tag">午場三點開始</span></div>
+    </li>
+    <li data-tags="禮服店,禮服,午場一點開始,午場,威系列同集團,威系列">
+      <div class="venue-name">Focus</div>
+      <div class="venue-tags"><span class="tag">禮服店</span><span class="tag">午場下午兩點開始</span><span class="tag">威系列同集團</span></div>
+    </li>
+    <li data-tags="禮服店,禮服,午場,威系列同集團,威系列">
+      <div class="venue-name">紫藤</div>
+      <div class="venue-tags"><span class="tag">禮服店</span><span class="tag">午場下午一點開始</span><span class="tag">威系列同集團</span></div>
+    </li>
+    <li data-tags="薄紗,秀舞,威系列,公主店,午場">
+      <div class="venue-name">豪威</div>
+      <div class="venue-tags"><span class="tag">薄紗</span><span class="tag">秀舞</span><span class="tag">午場下午兩點開始</span><span class="tag">威系列</span><span class="tag">公主店</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">威斯汀</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="框店">
+      <div class="venue-name">香閣</div>
+      <div class="venue-tags"><span class="tag">框店</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">百達</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">特蘭斯</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="制禮,制服,禮服,秀舞">
+      <div class="venue-name">長春/大老闆</div>
+      <div class="venue-tags"><span class="tag">制禮</span></div>
+    </li>
+     </li>
+    <li data-tags="制禮,禮服,制服,秀舞">
+      <div class="venue-name">東區209</div>
+      <div class="venue-tags"><span class="tag">制禮</span></div>
+    </li>
+  </ul>
+
+  <p class="empty-msg" id="emptyMsg">沒有符合條件的店家。</p>
+
+  <div class="section-block">
+    <h2><span class="num">※</span>其他補充</h2>
+
+    <div class="extra-note">
+      <h3>1. 比較特別的豪威（統領7樓）</h3>
+      <p>豪威穿的衣服部分接近情趣內衣/比基尼，據說也有人穿禮服，有部分人會秀舞，有些不會，供參考。</p>
+      <p>秀舞為什麼有些人會有些人不會，因為秀舞要坐在客人身上跳性感的舞，有些客人會趁機喇/摸/吸奶/摳花園，比較危險。</p>
+      <p>秀舞一次會多給 600 （店家不抽），所以沒多多少，很多人不會秀。且一個包廂裡要過半數小姐能秀舞，才可以秀（例如可以秀：不可以秀1：3是不能秀的）。</p>
+    </div>
+    <div class="extra-note">
+      <h3>2. 統領其他店</h3>
+      <p>統領2樓是威晶<br>統領11樓是 Focus（原忠孝麗緻）<br>統領隔壁是紫藤（原敦南麗緻）</p>
+    </div>
+
+    <div class="extra-note">
+      <h3>3. 午場有哪些</h3>
+      <p>Focus、紫藤、香閣、金典、金聰、鴻欣、金拿督、豪威、皇冠。</p>
+      <p>午場的店相對晚場少，所以有午場需求的（特別是有門禁的學生、住家裡的人）很多會被往這幾家帶。</p>
+      <p>前兩間 Focus 跟紫藤，因為規模比較大（紫藤比 F 小間），所以多數午場會被往這邊帶。規模大的店競爭也會比較大、人員流動率高。</p>
+    </div>
+   <div class="extra-note">
+  <h3>讀者投稿</h3>
+  <p><a href="reader-tips-1.html" style="color:var(--accent);">關於公主店／王董體系／豪威 →</a></p>
+</div>
+  </div>
+
+  <footer>
+    最後更新：2026-08-22
+  </footer>
+
+</div>
+
+<script>
+  const searchBox = document.getElementById('searchBox');
+  const chips = document.querySelectorAll('.chip');
+  const items = document.querySelectorAll('#venueList li');
+  const emptyMsg = document.getElementById('emptyMsg');
+  let activeTag = '全部';
+
+  function applyFilter(){
+    const query = searchBox.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    items.forEach(li => {
+      const name = li.querySelector('.venue-name').textContent.toLowerCase();
+      const tags = (li.dataset.tags || '').toLowerCase();
+      const matchesTag = activeTag === '全部' || tags.includes(activeTag.toLowerCase());
+      const matchesSearch = query === '' || name.includes(query) || tags.includes(query);
+
+      if(matchesTag && matchesSearch){
+        li.style.display = '';
+        visibleCount++;
+      } else {
+        li.style.display = 'none';
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  searchBox.addEventListener('input', applyFilter);
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeTag = chip.dataset.tag;
+      applyFilter();
+    });
+  });
+</script>
+</body>
+</html>

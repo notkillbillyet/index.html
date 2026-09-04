@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防範下藥安全提醒</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efefef;
+    --ink:#2b2a26;
+    --ink-soft:#5c594f;
+    --line:#c9c4b4;
+    --tag-bg:#dedad0;
+    --accent:#7a3b2e;
+    --warn:#8a2f24;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:1.85;
+  }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 20px 100px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:32px;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+  .back-link:hover{
+    color:var(--accent);
+  }
+  header{
+    margin-bottom:24px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  header .eyebrow{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  header h1{
+    font-size:22px;
+    font-weight:600;
+    margin:10px 0 0;
+  }
+  .intro p{
+    font-size:15px;
+    margin:0 0 14px;
+  }
+  .intro{
+    margin-bottom:36px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  .action-box{
+    background:#f2e4e0;
+    border-left:3px solid var(--warn);
+    border-radius:4px;
+    padding:16px 18px;
+    font-size:15px;
+    margin:16px 0;
+  }
+  .action-box p{
+    margin:0 0 10px;
+  }
+  .action-box p:last-child{
+    margin-bottom:0;
+  }
+  section{
+    margin-bottom:40px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .section-title .num{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:14px;
+  }
+  .section-title h2{
+    font-size:17px;
+    font-weight:600;
+    margin:0;
+  }
+  ul.plain{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  ul.plain li{
+    font-size:15px;
+    padding:9px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  ul.plain li:last-child{
+    border-bottom:none;
+  }
+  .cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 20px;
+  }
+  @media (max-width:420px){
+    .cols{ grid-template-columns:1fr; }
+  }
+  footer{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">← 回索引</a>
+
+  <header>
+    <div class="eyebrow">安全提醒 / SAFETY</div>
+    <h1>防範下藥安全提醒</h1>
+  </header>
+
+  <div class="intro">
+    <p>最近藥局員工飲水被藥師下藥這個新聞應該有不少人看到，同行大家自己小心。</p>
+    <p>酒店常常有傳聞小姐被下藥性侵，雖然自己身上跟身邊沒有發生過，但合理推斷是很容易發生的。</p>
+    <p>教育宣導都會說要女生不讓杯子離開視線，但在酒店工作有太多時機會讓自己的杯子離開身邊，例如上廁所不可能帶杯子。</p>
+  </div>
+
+  <div class="action-box">
+    <p>所以感覺客人反應怪怪❗️或飲料味道怪怪❗️不要喝，想辦法自卡離開，逃跑最重要。</p>
+    <p>萬一暫時離不開，至少要倒垃圾桶拖延時間（雖然這會把證據倒掉，但也不太可能帶著杯子逃跑）。</p>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <span class="num">💊</span>
+      <h2>常見的約會強暴藥物／物質</h2>
+    </div>
+    <ul class="plain">
+      <li>酒精（是的，酒精本來就是約會強暴最普遍的物質，懂為什麼有的客人要灌酒了吧）</li>
+      <li>苯二氮平類藥物（如 FM2）</li>
+      <li>柔拍／史蒂諾斯／佐沛眠（Zolpidem）</li>
+      <li>神仙水（GHB）：特徵是澄清、無色、聞不出來</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">⚠️</span>
+      <h2>服用之後的反應</h2>
+    </div>
+    <div class="cols">
+      <ul class="plain">
+        <li>頭暈</li>
+        <li>嗜睡</li>
+        <li>意識不清</li>
+        <li>心悸</li>
+        <li>突然站不穩、協調能力下降</li>
+      </ul>
+      <ul class="plain">
+        <li>視線模糊</li>
+        <li>噁心、嘔吐</li>
+        <li>言語含糊</li>
+        <li>意識混亂</li>
+        <li>突然記憶缺失／斷片</li>
+      </ul>
+    </div>
+    <ul class="plain">
+      <li>呼吸變慢或呼吸困難（嚴重時）</li>
+      <li>失去意識</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">👀</span>
+      <h2>客人怎樣才是反應怪怪？</h2>
+    </div>
+    <ul class="plain">
+      <li>一直想要你喝某杯東西</li>
+      <li>上廁所回來突然想灌酒</li>
+      <li>他特意想要幫你調酒</li>
+      <li>阻止求助</li>
+      <li>突然支開包廂其他人（例如叫兄弟都出去打電話或匡妹出去）</li>
+    </ul>
+  </section>
+
+  <footer>
+    最後更新：2026-08-22
+  </footer>
+
+</div>
+</body>
+</html>

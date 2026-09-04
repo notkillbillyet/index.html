@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桃園酒店整理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efefef;
+    --ink:#2b2a26;
+    --ink-soft:#5c594f;
+    --line:#c9c4b4;
+    --tag-bg:#dedad0;
+    --accent:#7a3b2e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:1.75;
+  }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 20px 100px;
+  }
+  header{
+    margin-bottom:40px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  header .eyebrow{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  header h1{
+    font-size:24px;
+    font-weight:600;
+    margin:10px 0 8px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:32px;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+  .back-link:hover{
+    color:var(--accent);
+  }
+  ul.venues{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  ul.venues li{
+    border-bottom:1px dashed var(--line);
+    padding:14px 0;
+  }
+  ul.venues li:last-child{
+    border-bottom:none;
+  }
+  .venue-name{
+    font-size:16px;
+    font-weight:600;
+  }
+  .venue-tags{
+    margin-top:4px;
+  }
+  .tag{
+    display:inline-block;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:10.5px;
+    background:var(--tag-bg);
+    color:var(--ink-soft);
+    padding:2px 7px;
+    border-radius:3px;
+    margin-right:6px;
+    margin-top:4px;
+    letter-spacing:0.02em;
+  }
+  .controls{
+    margin-bottom:28px;
+  }
+  .search-box{
+    width:100%;
+    padding:10px 14px;
+    font-size:14.5px;
+    font-family:"Noto Sans TC","PingFang TC",sans-serif;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:#f6f4ee;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .search-box:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  .filter-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:11.5px;
+    letter-spacing:0.02em;
+    padding:5px 12px;
+    border-radius:14px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .chip:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .chip.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#f2ece4;
+  }
+  .empty-msg{
+    display:none;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding:20px 0;
+  }
+  footer{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">← 回索引</a>
+
+  <header>
+    <div class="eyebrow">資料整理 / REFERENCE</div>
+    <h1>桃園酒店整理</h1>
+  </header>
+
+  <div class="controls">
+    <input type="text" class="search-box" id="searchBox" placeholder="搜尋店名或類型…">
+    <div class="filter-chips" id="filterChips">
+      <button class="chip active" data-tag="全部">全部</button>
+      <button class="chip" data-tag="禮服">禮服</button>
+      <button class="chip" data-tag="制服">制服</button>
+      <button class="chip" data-tag="制禮">制禮</button>
+      <button class="chip" data-tag="午場">午場</button>
+      <button class="chip" data-tag="桃園區">桃園區</button>
+      <button class="chip" data-tag="平鎮">平鎮</button>
+      <button class="chip" data-tag="中壢">中壢</button>
+    </div>
+  </div>
+
+  <ul class="venues" id="venueList">
+    <li data-tags="禮服,桃園區,午場">
+      <div class="venue-name">金沙</div>
+      <div class="venue-tags"><span class="tag">禮服</span><span class="tag">桃園區</span><span class="tag">午場</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">天上人間</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="禮服,桃園區">
+      <div class="venue-name">中國城</div>
+      <div class="venue-tags"><span class="tag">禮服</span><span class="tag">桃園區</span></div>
+
+    <li data-tags="禮服">
+      <div class="venue-name">總裁行館</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="平鎮">
+      <div class="venue-name">宮廷</div>
+      <div class="venue-tags"><span class="tag">平鎮</span></div>
+    </li>
+    <li data-tags="午場">
+      <div class="venue-name">曼哈頓</div>
+      <div class="venue-tags"><span class="tag">午場</span></div>
+    </li>
+    <li data-tags="制禮,制服,禮服">
+      <div class="venue-name">巴黎情人</div>
+      <div class="venue-tags"><span class="tag">制禮</span></div>
+    </li>
+    <li data-tags="制服">
+      <div class="venue-name">酒神巴克斯</div>
+      <div class="venue-tags"><span class="tag">制服</span></div>
+    </li>
+    <li data-tags="禮服">
+      <div class="venue-name">夏豪</div>
+      <div class="venue-tags"><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="中壢">
+      <div class="venue-name">名流</div>
+      <div class="venue-tags"><span class="tag">中壢</span></div>
+    </li>
+    <li data-tags="制禮,制服,禮服,中壢">
+      <div class="venue-name">東京ktv</div>
+      <div class="venue-tags"><span class="tag">制禮</span><span class="tag">中壢</span></div>
+    </li>
+    <li data-tags="平鎮區,平鎮,制禮,制服,禮服">
+      <div class="venue-name">88行館</div>
+      <div class="venue-tags"><span class="tag">平鎮區</span><span class="tag">制禮</span></div>
+    </li>
+    <li data-tags="平鎮">
+      <div class="venue-name">黑貓</div>
+      <div class="venue-tags"><span class="tag">平鎮</span></div>
+    </li>
+    <li data-tags="禮服,午場">
+      <div class="venue-name">星殿</div>
+      <div class="venue-tags"><span class="tag">午場</span><span class="tag">禮服</span></div>
+    </li>
+    <li data-tags="制禮,制服,禮服">
+      <div class="venue-name">心動KTV</div>
+      <div class="venue-tags"><span class="tag">制禮</span></div>
+      </li>
+    <li data-tags="制禮,制服,禮服">
+      <div class="venue-name">百樂</div>
+      <div class="venue-tags"><span class="tag">制禮</span></div>
+    </li>
+    <li data-tags="中壢">
+      <div class="venue-name">金總</div>
+      <div class="venue-tags"><span class="tag">中壢後站</span></div>
+    </li>
+        <li data-tags="中壢">
+      <div class="venue-name">紅喜</div>
+      <div class="venue-tags"><span class="tag">中壢</span></div>
+    </li>
+  </ul>
+
+  <p class="empty-msg" id="emptyMsg">沒有符合條件的店家。</p>
+
+  <footer>
+    最後更新：2026-08-22
+  </footer>
+
+</div>
+
+<script>
+  const searchBox = document.getElementById('searchBox');
+  const chips = document.querySelectorAll('.chip');
+  const items = document.querySelectorAll('#venueList li');
+  const emptyMsg = document.getElementById('emptyMsg');
+  let activeTag = '全部';
+
+  function applyFilter(){
+    const query = searchBox.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    items.forEach(li => {
+      const name = li.querySelector('.venue-name').textContent.toLowerCase();
+      const tags = (li.dataset.tags || '').toLowerCase();
+      const matchesTag = activeTag === '全部' || tags.includes(activeTag.toLowerCase());
+      const matchesSearch = query === '' || name.includes(query) || tags.includes(query);
+
+      if(matchesTag && matchesSearch){
+        li.style.display = '';
+        visibleCount++;
+      } else {
+        li.style.display = 'none';
+      }
+    });
+
+    emptyMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  searchBox.addEventListener('input', applyFilter);
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeTag = chip.dataset.tag;
+      applyFilter();
+    });
+  });
+</script>
+</body>
+</html>
