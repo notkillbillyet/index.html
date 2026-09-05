@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記錄幹部與客人資訊：自保提醒</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efefef;
+    --ink:#2b2a26;
+    --ink-soft:#5c594f;
+    --line:#c9c4b4;
+    --tag-bg:#dedad0;
+    --accent:#7a3b2e;
+    --warn:#8a2f24;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:1.85;
+  }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 20px 100px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:32px;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+  .back-link:hover{
+    color:var(--accent);
+  }
+  header{
+    margin-bottom:24px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  header .eyebrow{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  header h1{
+    font-size:22px;
+    font-weight:600;
+    margin:10px 0 0;
+  }
+  .intro p{
+    font-size:15px;
+    margin:0 0 12px;
+  }
+  .intro{
+    margin-bottom:36px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  section{
+    margin-bottom:40px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .section-title .num{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.05em;
+  }
+  .section-title h2{
+    font-size:17px;
+    font-weight:600;
+    margin:0;
+  }
+  section p{
+    font-size:15px;
+    margin:0 0 12px;
+  }
+  section p:last-child{
+    margin-bottom:0;
+  }
+  ol.steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:step;
+  }
+  ol.steps li{
+    counter-increment:step;
+    font-size:15px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    display:flex;
+    gap:10px;
+  }
+  ol.steps li:last-child{
+    border-bottom:none;
+  }
+  ol.steps li::before{
+    content:counter(step);
+    flex-shrink:0;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:13px;
+    color:var(--accent);
+    padding-top:2px;
+  }
+  .example-box{
+    background:var(--tag-bg);
+    border-radius:4px;
+    padding:16px 18px;
+    margin:16px 0;
+  }
+  .example-box .label{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .example-box .content{
+    font-size:15.5px;
+    font-weight:600;
+    line-height:1.6;
+  }
+  .example-box .caption{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:10px;
+    font-weight:400;
+  }
+  .action-box{
+    background:#f2e4e0;
+    border-left:3px solid var(--warn);
+    border-radius:4px;
+    padding:16px 18px;
+    font-size:14.5px;
+    margin-top:16px;
+  }
+  .warn-title{
+    color:var(--warn);
+  }
+  footer{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">← 回索引</a>
+
+  <header>
+    <div class="eyebrow">安全提醒 / SAFETY</div>
+    <h1>記錄幹部與客人資訊：自保提醒</h1>
+  </header>
+
+  <div class="intro">
+    <p>看到脆友被客人欺負的貼文很心疼，想再次提醒各位姊妹。</p>
+    <p>即使是看台店，也要盡力❗️記住每一桌的幹部名字跟進去的日期時間（有的地方門上有帳夾，可以抽出來看會寫幹部）。可以在❗️上廁所的時候拿手機出來記幹部名字。</p>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <span class="num">01</span>
+      <h2>萬一看台來不及看帳夾</h2>
+    </div>
+    <ol class="steps">
+      <li>聊天的時候問問客人幹部是誰</li>
+      <li>（如果當桌有發生事情）出來的時候看帳夾</li>
+      <li>（如果當桌有發生事情）出來還是來不及看帳夾，送完客回去看</li>
+      <li>直接當場問行政控台說幹部是誰、客人做了什麼不對的事</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">02</span>
+      <h2>萬一這個客人當桌有超過的行為，甚至是犯罪行為</h2>
+    </div>
+    <p>這個幹部名字＋上台時間＋包廂號碼，可以讓行政直接幫你禁看，甚至聯絡幹部去勸導客人，或是有進一步需要求償都可以用到。</p>
+
+    <div class="example-box">
+      <div class="label">範例</div>
+      <div class="content">9/5 17:10分　009包廂　幹部阿水　訂桌客人張董　22:00下台</div>
+      <div class="caption">有這串文字，公司就可以直接去擋掉那個幹部帶的客人。</div>
+    </div>
+
+    <p>因為業績幹部店，幹部亂七八糟的很多，客人也是五湖四海亂七八糟的一堆，根本不知道怎麼確認身份。</p>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">03</span>
+      <h2>關於客人的名片跟聯絡方式</h2>
+    </div>
+    <p>如果有客人要給名片，拿就對了，對自己比較有保障（上面有公司、電話、手機的更好）。</p>
+    <p>客人用本名跟本人照片加賴，加就對了。萬一發生犯罪，都可以成為佐證對方身份的資料。</p>
+  </section>
+
+  <div class="action-box">
+    <p class="warn-title" style="font-weight:600;margin-bottom:8px;">千萬不要等過一個禮拜才說「我要禁看某哥」——幹部不知道是誰，也不知道哪天進去的，這樣可能只能請城隍爺幫忙了😅</p>
+  </div>
+
+  <footer>
+    最後更新：2026-08-22
+  </footer>
+
+</div>
+</body>
+</html>
