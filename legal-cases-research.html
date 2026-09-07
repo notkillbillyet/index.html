@@ -17,6 +17,8 @@
     --accent:#7a3b2e;
     --warn:#8a2f24;
     --good:#3f6b4a;
+    --em-red:#c0392b;
+    --em-gray:#a3a09a;
   }
   *{box-sizing:border-box;}
   body{
@@ -94,14 +96,23 @@
   }
   .section-title .num{
     font-family:"Noto Sans Mono","Courier New",monospace;
-    font-size:12px;
+    font-size:13px;
     color:var(--accent);
-    letter-spacing:0.05em;
+    letter-spacing:0.02em;
+    flex-shrink:0;
   }
   .section-title h2{
     font-size:17px;
     font-weight:600;
     margin:0;
+  }
+  em.em-red{
+    font-style:normal;
+    font-weight:600;
+    color:var(--em-red);
+  }
+  span.em-gray{
+    color:var(--em-gray);
   }
   ul.factors{
     list-style:none;
@@ -111,6 +122,7 @@
   ul.factors li{
     padding:14px 0;
     border-bottom:1px dashed var(--line);
+    font-size:15px;
   }
   ul.factors li:last-child{
     border-bottom:none;
@@ -140,10 +152,6 @@
   .example .mark{
     color:var(--good);
     margin-left:6px;
-  }
-  .warn-line{
-    color:var(--warn);
-    font-weight:600;
   }
   .case-list{
     list-style:none;
@@ -178,11 +186,6 @@
   .case-result.convict{
     color:var(--good);
   }
-  .case-link{
-    font-size:12.5px;
-    color:var(--accent);
-    word-break:break-all;
-  }
   .callout{
     font-size:13px;
     color:var(--ink-soft);
@@ -210,15 +213,16 @@
     <h1>酒店性暴力案件的司法程序：自保要件研究</h1>
   </header>
 
-  <p class="intro">簡單用「酒店公關」四個字在裁判書系統搜尋，挑出四個跟妨害性自主有關的案件，搭配 AI 幫忙閱讀（不是法律專業人士）。各方統整之後，認為有幾個方式可以幫助自己在遇到性侵時，司法上更有力。</p>
+  <p class="intro">簡單用「酒店公關」四個字在裁判書系統搜尋，挑出幾個跟妨害性自主有關的案件，搭配 AI 幫忙閱讀（不是法律專業人士）。各方統整之後，認為有幾個方式可以幫助自己在遇到性侵時，司法上更有力。</p>
 
   <div class="disclaimer-box">
     <p>＊免責聲明：樣本小、關鍵詞單一、僅涵蓋公開判決書。</p>
+    <p>＊這裡歡迎處理事件經驗豐富的經紀自薦。</p>
   </div>
 
   <section>
     <div class="section-title">
-      <span class="num">01</span>
+      <span class="num">※</span>
       <h2>自保要件</h2>
     </div>
     <ul class="factors">
@@ -246,7 +250,58 @@
 
   <section>
     <div class="section-title">
-      <span class="num">02</span>
+      <span class="num">1</span>
+      <h2>離開包廂之前，先想清楚的事</h2>
+    </div>
+    <ul class="factors">
+      <li><em class="em-red">框出</em>之後就等於進入第二現場，等於<em class="em-red">已經離開酒店店家有保護的範圍</em>，店家和行政可能藉此<em class="em-red">推託責任</em><span class="em-gray">（還記得店家都說：「千萬不要去私人場所」嗎？這個卸責的意思叫做，萬一去了私人場所，等於就是「你的問題」喔）</span>。</li>
+      <li>不要跟客人灣掰 one by（跟客人在包廂單獨相處）（我是建議，我們以後都把灣掰客推掉吧！）</li>
+      <li>酒店內<em class="em-red">包廂內沒有監視器</em>，所以同台小姐和與行政的手機訊息求救會是重要的證據。</li>
+      <li><em class="em-red">喝醉就下班</em>，喝醉的狀況下，發生性暴力事件且無法抵抗的風險會大大提升。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">2</span>
+      <h2>事發當下與事後：自己能做的證據保全</h2>
+    </div>
+    <ul class="factors">
+      <li>發生事件之後必須要<em class="em-red">立刻驗傷</em>保存證據。</li>
+      <li><em class="em-red">要記清楚事件經過</em>，以免因為當下的驚嚇而產生證詞「稍微」前後不一致的情況。若有前後不一致，法律攻防將會對被害者不利。</li>
+      <li>如果開庭的過程，身心狀況能夠堅持的狀況下，與被告當庭對質，勝訴機會將會有實質提升。（這點對被害人來說很困難，請衡量身心狀況。）</li>
+      <li>司法的途徑會對當事人造成嚴重的壓力，也會纏訟多年，<em class="em-red">所以事件發生當下，有很多有利證據的保存，會是未來各層級法院審理中重要的勝訴條件。</em></li>
+      <li>請跟在事件發生後逃離過程的接觸到的任何人說，「<em class="em-red">我發生了緊急的〇〇〇狀況，請你幫助我報案／載我去醫院／載我去警察局／請你讓我在商店暫時躲藏 etc.」</em></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">3-1</span>
+      <h2>進入司法程序：無法控制、但必須預先理解的外部變數</h2>
+    </div>
+    <ul class="factors">
+      <li>幹部跟店家的立場，為維繫客戶關係或懼怕客人的影響力，在某些狀況下會保護客人，不會保護小姐，等於他們多數時候可能是站在被告一方的人。</li>
+      <li>旅館不一定會協助提供監視器影像，雖然檢方有權要求，但他們也有可能無法配合<span class="em-gray">（例如畫面太久遠已經從系統自動刪除）</span></li>
+      <li>客人的朋友可能會協助作出對被害人<em class="em-red">不利的證詞（甚至是偽證）</em>，或者誤讀職業性的社交客套是親密且合意的狀態（他們是被告方的證人），並且會供述製造被害人跟加害人事前親密友善接觸、談及任務價格的證言。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">3-2</span>
+      <h2>進入司法程序：無法控制、但必須預先理解的外部變數</h2>
+    </div>
+    <ul class="factors">
+      <li>客人甚至會<em class="em-red">聲稱已經匯款給小姐或店家</em>，表示是對價交易之實質證據，然事實上被害人並無與其對價交易。<span class="em-gray">（這是很多判決裡面客人最常用的一招！）</span></li>
+      <li><em class="em-red">證人很重要</em>，人證會決定判決的走向。法院的判決除了會參考監視器畫面之外，還會參考人證，人證是決定性的因素，因此有在站被害人公關自己這邊的證人很重要<em class="em-red">（經紀、其他公關、保姆）</em></li>
+      <li>中性的證人也很重要：旅館櫃檯、計程車司機、商店店員。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">※</span>
       <h2>案件整理</h2>
     </div>
     <ul class="case-list">
@@ -256,21 +311,21 @@
         <div class="case-result acquit">被告王澄堯無罪</div>
       </li>
       <li>
-        <div class="case-title">２. 皇家酒店案</div>
+        <div class="case-title">2. 皇家酒店案</div>
         <div class="case-meta">臺灣士林地方法院刑事判決 113 年度侵訴緝字第 1 號</div>
         <div class="case-result convict">曾威智犯強制性交罪，有期徒刑 3 年 8 月</div>
       </li>
       <li>
-        <div class="case-title">３. 賓士KTV案</div>
+        <div class="case-title">3. 賓士KTV案</div>
         <div class="case-meta">臺灣臺南地方法院刑事判決 113 年度侵訴字第 35 號｜被告：史勝雄</div>
         <div class="case-result convict">甲○○犯乘機性交罪，處有期徒刑肆年</div>
       </li>
     </ul>
-    <p class="callout">裁判書可至<a href="https://judgment.judicial.gov.tw/FJUD/default.aspx" target="_blank" rel="noopener" style="color:var(--accent);">司法院裁判書查詢</a>以判決字號查詢全文。</p>
+    <p class="callout">查判決書：可至<a href="https://judgment.judicial.gov.tw/" target="_blank" rel="noopener" style="color:var(--accent);">司法院裁判書查詢系統</a>以判決字號查詢全文。</p>
   </section>
 
   <footer>
-    最後更新：2026-09-05
+    最後更新：2026-09-06
   </footer>
 
 </div>
