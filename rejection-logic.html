@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>客人卡人（止台）的邏輯</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efefef;
+    --ink:#2b2a26;
+    --ink-soft:#5c594f;
+    --line:#c9c4b4;
+    --tag-bg:#dedad0;
+    --accent:#7a3b2e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    line-height:1.85;
+  }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 20px 100px;
+  }
+  .back-link{
+    display:inline-block;
+    margin-bottom:32px;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+  .back-link:hover{
+    color:var(--accent);
+  }
+  header{
+    margin-bottom:20px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  header .eyebrow{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  header h1{
+    font-size:22px;
+    font-weight:600;
+    margin:10px 0 0;
+  }
+  .intro{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin-bottom:36px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  .intro b{
+    color:var(--accent);
+  }
+  section{
+    margin-bottom:40px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+  section:last-of-type{
+    border-bottom:none;
+  }
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .section-title .num{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.05em;
+  }
+  .section-title h2{
+    font-size:17px;
+    font-weight:600;
+    margin:0;
+  }
+  section p{
+    font-size:15px;
+    margin:0 0 12px;
+  }
+  section p:last-child{
+    margin-bottom:0;
+  }
+  .term-box{
+    background:var(--tag-bg);
+    border-radius:4px;
+    padding:14px 16px;
+    margin-bottom:12px;
+  }
+  .term-box:last-child{
+    margin-bottom:0;
+  }
+  .term-box .term-label{
+    font-family:"Noto Sans Mono","Courier New",monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .term-box p{
+    font-size:14.5px;
+    margin:0;
+  }
+  ul.plain{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  ul.plain li{
+    font-size:15px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  ul.plain li:last-child{
+    border-bottom:none;
+  }
+  .conclusion{
+    font-size:15px;
+    padding:16px 18px;
+    border:1px solid var(--accent);
+    border-radius:4px;
+    margin-top:16px;
+    font-weight:600;
+  }
+  footer{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    font-family:"Noto Sans Mono","Courier New",monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">← 回索引</a>
+
+  <header>
+    <div class="eyebrow">經營筆記 / NOTES</div>
+    <h1>客人卡人（止台）的邏輯</h1>
+  </header>
+
+  <p class="intro">今天來分享客人卡人（止掉／止台）的邏輯。通常不是因為<b>你不夠好</b>，是因為<b>客人在省錢</b>。</p>
+
+  <section>
+    <div class="section-title">
+      <span class="num">01</span>
+      <h2>客人的預算來自哪裡？</h2>
+    </div>
+    <ul class="plain">
+      <li>玩樂客：自己的錢包、主客的錢包</li>
+      <li>商務客：公司的經費</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">02</span>
+      <h2>玩樂客</h2>
+    </div>
+    <p>有一種心態是希望自己的錢可以最大化玩到的妹的數量，但又負擔不起「我全都要」，這時候可能就會出現預三／控三／控 N（未知數）的時間算法。</p>
+
+    <div class="term-box">
+      <div class="term-label">a. 預三</div>
+      <p>30 分鐘試用完畢，下一批。或者這個客人想要可以色、可以出任務的妹，覺得試用得不錯，會續點（繼續）。</p>
+    </div>
+    <div class="term-box">
+      <div class="term-label">b. 控三／控 N</div>
+      <p>例如控三是以 3 的倍數來點，每 30 分鐘會有行政進來問要不要繼續。這個好處就是，不是被止台，所以妹不會被扣節數。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">03</span>
+      <h2>商務客</h2>
+    </div>
+    <p>來談生意或是應酬的，有時候只是需要一些服務生坐在旁邊。如果每個客人旁邊坐一個服務生，可能有的客人覺得太多了，就會把幾個妹卡出去，因為一個妹可以服務好幾個客人（至多三個）。</p>
+    <p>因為用公司的預算，而你的客人如果不是主客（老闆），為了表示自己很節儉，有時候就會把你止出去。</p>
+    <p>這也能解釋為什麼有的客人死不點妹，因為他不是出錢的那個、或是他出不起，為了表示客氣，就會死不點，到了主客硬是要他旁邊坐一個的時候才會有妹坐下。</p>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <span class="num">04</span>
+      <h2>所以，總歸一句：預算問題</h2>
+    </div>
+    <p>公司會叫你說，你要爭取客人的心讓你留下啊！這對也不對。有的客人就是要色到才留人，那你願意嗎？願意就色誘他。有的客人要摩羯座才留人，你不是摩羯座也沒辦法。</p>
+    <p>有的客人預算真的很有限，這時候他就會使出絕招：卡出去但留賴。因為他真的很喜歡你，可是你不能色，旁邊的妹可以出任務，或者聊比較久，只好遺憾地留一個不知道有啥用的聯絡方式（80% 不會再回來）。</p>
+    <p>通常客人都是要色才能留。不然就是你要長得跟小模差不多，才能漂亮之外其他都不用做。</p>
+    <p>如果預算真的很充裕的客人，當然是小孩子才選擇我全都要。可是就像是同時訂閱了 Netflix 跟 Disney+ 還有 HBO，但這個月戶頭只剩一千塊，要留誰？有錢當然全都訂閱啊！</p>
+    <p>取消 HBO 不代表 HBO 不好，只是說我可能這個月比較想看《怪奇物語》而已。</p>
+
+    <div class="conclusion">結論：一切都是預算問題。</div>
+  </section>
+
+  <footer>
+    最後更新：2026-09-06
+  </footer>
+
+</div>
+</body>
+</html>
